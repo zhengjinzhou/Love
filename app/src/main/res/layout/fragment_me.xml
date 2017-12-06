@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent">
+
+
+        <TextView
+            style="@style/StyleHead"
+            android:layout_centerInParent="true"
+            android:text="我"/>
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="#efeff4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:padding="20dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circle"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:src="@drawable/test1"/>
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/circle"
+                    android:text="姓名"
+                    android:textColor="#1e1e1e"
+                    android:textSize="14sp"/>
+
+                <ImageView
+                    android:id="@+id/iv_gender"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/circle"
+                    android:src="@drawable/male"/>
+
+                <TextView
+                    android:id="@+id/tv_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="14dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="14dp"
+                    android:text="编辑"
+                    android:textColor="#1e1e1e"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="#efeff4"/>
+
+            <TextView
+                android:id="@+id/tv_safe"
+                style="@style/TextStyle"
+                android:text="安全管理"/>
+
+            <TextView
+                style="@style/LineStyle"/>
+
+            <TextView
+                android:id="@+id/tv_privacy"
+                style="@style/TextStyle"
+                android:text="隐私管理"/>
+
+            <TextView
+                style="@style/LineStyle"/>
+
+            <TextView
+                android:id="@+id/tv_picture"
+                style="@style/TextStyle"
+                android:text="图片浏览设置"/>
+
+            <TextView
+                style="@style/LineStyle"
+                />
+
+            <TextView
+                android:id="@+id/tv_about"
+                style="@style/TextStyle"
+                android:text="关于"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="#efeff4"/>
+
+            <TextView
+                android:id="@+id/tv_guild"
+                style="@style/TextStyle"
+                android:text="新手引导"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="#efeff4"/>
+
+            <TextView
+                android:id="@+id/tv_exit"
+                style="@style/TextStyle"
+                android:text="退出登录"/>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

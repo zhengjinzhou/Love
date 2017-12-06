@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="zhou.com.snail.ui.activity.LoginActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp"
+        android:src="@drawable/fall_in_love"/>
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:padding="6dp"
+        android:src="@drawable/login_user"
+        android:layout_above="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"/>
+
+
+    <EditText
+        android:textSize="14sp"
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/circle"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@+id/iv"
+        android:background="@null"
+        android:hint="请输入您的学号"
+        android:inputType="number"
+        android:maxLines="1"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:layout_below="@+id/et_username"
+        android:layout_marginLeft="14dp"
+        android:background="#efeff4"/>
+
+    <ImageView
+        android:id="@+id/iv2"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:padding="6dp"
+        android:src="@drawable/login_pwd"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"/>
+
+    <EditText
+        android:textSize="14sp"
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_username"
+        android:layout_toRightOf="@+id/iv2"
+        android:background="@null"
+        android:hint="请输入您的密码"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:layout_below="@+id/et_password"
+        android:layout_marginLeft="14dp"
+        android:background="#efeff4"/>
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_password"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_bg"
+        android:text="登 录"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        />
+
+</RelativeLayout>
