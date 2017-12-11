@@ -3,6 +3,7 @@ package zhou.com.snail.ui.activity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
@@ -45,6 +46,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         etUsername.setText("2014414");
         etPassword.setText("123");
     }
@@ -78,7 +81,9 @@ public class LoginActivity extends BaseActivity {
         String _t = CurrentTimeUtil.nowTime();
         String joint = "_t=" + _t + "&actNumber=" + username + "&opt=" + opt + "&pwd=" + pwd + Constant.APP_ENCRYPTION_KEY;
         String _s = Md5Util.encoder(joint);
-        //System.out.println("拼接后_t的数据--------"+joint);
+
+        System.out.println("拼接后_t的数据--------"+joint);
+
         OkHttpClient okHttpClient = new OkHttpClient();
 
         FormBody body = new FormBody.Builder()
@@ -104,46 +109,53 @@ public class LoginActivity extends BaseActivity {
 
         @Override
         public void onResponse(Call call, Response response) throws IOException {
-            Gson gson = new Gson();
-            UserInfo userInfo = gson.fromJson(response.body().string(), UserInfo.class);
-            String token = userInfo.getToken();
-            String uid = userInfo.getUid();
-
-            String opt = "5";
-            String _t = CurrentTimeUtil.nowTime();
-            String joint = "_t=" + _t + "&opt=" + opt + "&token=" + token + "&uid=" + uid + Constant.APP_ENCRYPTION_KEY;
-            String _s = Md5Util.encoder(joint);
-            OkHttpClient okHttpClient = new OkHttpClient();
-            FormBody build = new FormBody.Builder()
-                    .add("uid", uid)
-                    .add("token", token)
-                    .add("opt", opt)
-                    .add("_t", _t)
-                    .add("_s", _s)
-                    .build();
-            Request request = new Request.Builder().url(Constant.LOGIN_URL).post(build).build();
-            Call call2 = okHttpClient.newCall(request);
-            call2.enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    Log.d(TAG, "onFailure: " + e);
-                }
-
-                @Override
-                public void onResponse(Call call, Response res) throws IOException {
-                    Gson gson1 = new Gson();
-                    PersonalBean personalBean = gson1.fromJson(res.body().string(), PersonalBean.class);
-                    App.getInstence().setPersonalBean(personalBean);
-                }
-            });
-
-            App.getInstence().setUserInfo(userInfo);
-            if (userInfo.getError().equals("-1")) {
-                startToActivity(HomeActivity.class);
-            } else if (userInfo.getError().equals("-2")) {
-                startToActivity(RegisterActivity.class);
-            }
-
+            String string = response.body().string();
+            getResult(string);
         }
     };
+
+    private void getResult(String data) {
+        Gson gson = new Gson();
+        UserInfo userInfo = gson.fromJson(data, UserInfo.class);
+        String token = userInfo.getToken();
+        String uid = userInfo.getUid();
+
+        Log.d(TAG, "getResult: "+token);
+        Log.d(TAG, "getResult: "+uid);
+
+        String opt = "5";
+        String _t = CurrentTimeUtil.nowTime();
+        String joint = "_t=" + _t + "&opt=" + opt + "&token=" + token + "&uid=" + uid + Constant.APP_ENCRYPTION_KEY;
+        String _s = Md5Util.encoder(joint);
+        OkHttpClient okHttpClient = new OkHttpClient();
+        FormBody build = new FormBody.Builder()
+                .add("uid", uid)
+                .add("token", token)
+                .add("opt", opt)
+                .add("_t", _t)
+                .add("_s", _s)
+                .build();
+        Request request = new Request.Builder().url(Constant.LOGIN_URL).post(build).build();
+        Call call2 = okHttpClient.newCall(request);
+        call2.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d(TAG, "onFailure: " + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response res) throws IOException {
+                Gson gson1 = new Gson();
+                PersonalBean personalBean = gson1.fromJson(res.body().string(), PersonalBean.class);
+                App.getInstence().setPersonalBean(personalBean);
+            }
+        });
+
+        App.getInstence().setUserInfo(userInfo);
+        if (userInfo.getError().equals("-1")) {
+            startToActivity(HomeActivity.class);
+        } else if (userInfo.getError().equals("-2")) {
+            startToActivity(RegisterActivity.class);
+        }
+    }
 }
