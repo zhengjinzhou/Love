@@ -110,6 +110,7 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             String string = response.body().string();
+            Log.d(TAG, "onResponse: "+string);
             getResult(string);
         }
     };
@@ -120,6 +121,15 @@ public class LoginActivity extends BaseActivity {
         String token = userInfo.getToken();
         String uid = userInfo.getUid();
 
+        if (!userInfo.getError().equals("-1")){
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ToastUtil.show(getApplicationContext(),"访问超时，请检查您的系统时间是否是24小时制");
+                }
+            });
+            return;
+        }
         Log.d(TAG, "getResult: "+token);
         Log.d(TAG, "getResult: "+uid);
 

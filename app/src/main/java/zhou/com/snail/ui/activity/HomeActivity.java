@@ -14,6 +14,7 @@ import zhou.com.snail.base.BaseActivity;
 import zhou.com.snail.ui.fragment.HomeFragment;
 import zhou.com.snail.ui.fragment.MeFragment;
 import zhou.com.snail.ui.fragment.TaskFragment;
+import zhou.com.snail.util.ToastUtil;
 
 import static zhou.com.snail.R.id.tv_me;
 
@@ -83,11 +84,20 @@ public class HomeActivity extends BaseActivity {
         currentTabIndex = position;
     }
 
+    private long firstTime = 0;
+    private boolean isExit = false;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            AppManager.getAppManager().AppExit(this);
-            finish();
+            long secondTime = System.currentTimeMillis();
+            if (secondTime - firstTime > 2000) {
+                ToastUtil.show(getApplicationContext(), "再按一次退出程序");
+                firstTime = secondTime;
+            } else {
+                AppManager.getAppManager().AppExit(this);
+                finish();
+            }
         }
         return false;
     }

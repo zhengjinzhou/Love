@@ -1,7 +1,5 @@
 package zhou.com.snail.ui.activity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -16,14 +14,14 @@ import butterknife.BindView;
 import zhou.com.snail.R;
 import zhou.com.snail.base.BaseActivity;
 
-public class GuildActivity extends BaseActivity {
+public class StartActivity extends BaseActivity {
 
     @BindView(R.id.viewPager) ViewPager viewPager;
     private List<View> list;
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_guild;
+        return R.layout.activity_start;
     }
 
     @Override
@@ -31,12 +29,13 @@ public class GuildActivity extends BaseActivity {
         initViewpager();
     }
 
+
     private void initViewpager() {
         viewPager = findViewById(R.id.viewPager);
         list = new ArrayList<>();
-        View view1 = getLayoutInflater().inflate(R.layout.guild1, null);
-        View view2 = getLayoutInflater().inflate(R.layout.guild2, null);
-        View view3 = getLayoutInflater().inflate(R.layout.guild3, null);
+        View view1 = getLayoutInflater().inflate(R.layout.layout1, null);
+        View view2 = getLayoutInflater().inflate(R.layout.layout2, null);
+        View view3 = getLayoutInflater().inflate(R.layout.layout3, null);
 
         list.add(view1);
         list.add(view2);
@@ -44,7 +43,6 @@ public class GuildActivity extends BaseActivity {
 
         viewPager.setAdapter(new MyPagerAdapter());
     }
-
     class MyPagerAdapter extends PagerAdapter {
 
         @Override

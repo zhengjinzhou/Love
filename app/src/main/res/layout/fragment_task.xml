@@ -54,15 +54,10 @@
 
                 <TextView
                     android:id="@+id/tv_status"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/relativeLayout"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="53dp"
-                    android:layout_marginEnd="49dp"
-                    android:layout_marginRight="49dp"
-                    android:layout_toLeftOf="@+id/iv_point"
-                    android:layout_toStartOf="@+id/iv_point"
+                    android:layout_marginTop="160dp"
+                    android:gravity="center"
                     android:text="当前积分"
                     android:textColor="#fff" />
 

@@ -94,7 +94,8 @@ public class LoadDialog extends Dialog{
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (!cancelable) {
-                Toast.makeText(getContext(), tipMsg, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), tipMsg, Toast.LENGTH_SHORT).show();
+                dismiss();
                 return true;
             }
         }
