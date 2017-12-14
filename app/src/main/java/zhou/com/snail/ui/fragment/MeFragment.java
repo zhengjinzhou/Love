@@ -35,7 +35,7 @@ import zhou.com.snail.config.Constant;
 import zhou.com.snail.ui.activity.AboutActivity;
 import zhou.com.snail.ui.activity.DetailActivity;
 import zhou.com.snail.ui.activity.GuildActivity;
-import zhou.com.snail.ui.activity.PictureActivity;
+import zhou.com.snail.ui.activity.FriendActivity;
 import zhou.com.snail.ui.activity.PrivacyActivity;
 import zhou.com.snail.ui.activity.SafeActivity;
 import zhou.com.snail.util.CurrentTimeUtil;
@@ -136,7 +136,7 @@ public class MeFragment extends BaseFragment {
                 showPopupWindow();
                 break;
             case R.id.tv_picture:
-                startToActivity(PictureActivity.class);
+                startToActivity(FriendActivity.class);
                 break;
             case R.id.tv_guild:
                 startToActivity(GuildActivity.class);
