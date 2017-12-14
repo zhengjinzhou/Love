@@ -67,6 +67,9 @@ public class MeFragment extends BaseFragment {
     }
 
     private void getInfo() {
+        if (App.getInstence().getUserInfo() == null){
+            return;
+        }
         String uid = App.getInstence().getUserInfo().getUid();
         String token = App.getInstence().getUserInfo().getToken();
         String opt = "4";

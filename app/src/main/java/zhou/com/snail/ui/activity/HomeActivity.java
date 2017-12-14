@@ -11,6 +11,7 @@ import butterknife.OnClick;
 import zhou.com.snail.R;
 import zhou.com.snail.base.AppManager;
 import zhou.com.snail.base.BaseActivity;
+import zhou.com.snail.ui.fragment.FriendFragment;
 import zhou.com.snail.ui.fragment.HomeFragment;
 import zhou.com.snail.ui.fragment.MeFragment;
 import zhou.com.snail.ui.fragment.TaskFragment;
@@ -29,6 +30,7 @@ public class HomeActivity extends BaseActivity {
     private TaskFragment taskFragment;
     private Fragment[] fragments;
     private int currentTabIndex = 0;
+    private FriendFragment friendFragment;
 
     @Override
     protected int getLayout() {
@@ -44,21 +46,24 @@ public class HomeActivity extends BaseActivity {
     private void initFragment() {
         homeFragment = new HomeFragment();
         meFragment = new MeFragment();
+        friendFragment = new FriendFragment();
         taskFragment = new TaskFragment();
 
-        fragments = new Fragment[]{homeFragment, taskFragment, meFragment};
+        fragments = new Fragment[]{homeFragment, taskFragment, friendFragment, meFragment};
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.fragment_content, homeFragment)
                 .hide(homeFragment)
                 .add(R.id.fragment_content, taskFragment)
                 .hide(taskFragment)
+                .add(R.id.fragment_content, friendFragment)
+                .hide(friendFragment)
                 .add(R.id.fragment_content, meFragment)
                 .hide(meFragment)
                 .show(homeFragment)
                 .commit();
     }
 
-    @OnClick({R.id.tv_home, R.id.tv_task, tv_me})
+    @OnClick({R.id.tv_home, R.id.tv_task, R.id.tv_me, R.id.tv_friend})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_home:
@@ -67,8 +72,11 @@ public class HomeActivity extends BaseActivity {
             case R.id.tv_task:
                 showTabFragment(1);
                 break;
-            case R.id.tv_me:
+            case R.id.tv_friend:
                 showTabFragment(2);
+                break;
+            case R.id.tv_me:
+                showTabFragment(3);
                 break;
         }
     }
