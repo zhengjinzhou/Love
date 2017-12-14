@@ -1,5 +1,6 @@
 package zhou.com.snail.ui.fragment;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,9 +19,10 @@ import zhou.com.snail.base.BaseFragment;
  * Created by zhou on 2017/12/14.
  */
 
-public class FriendFragment extends BaseFragment {
+public class FriendFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
 
     @BindView(R.id.recycleView) RecyclerView recyclerView;
+    @BindView(R.id.fresh) SwipeRefreshLayout refreshLayout;
 
     @Override
     protected int getLayout() {
@@ -29,6 +31,7 @@ public class FriendFragment extends BaseFragment {
 
     @Override
     protected void init(View v) {
+        refreshLayout.setOnRefreshListener(this);
         initRecycle();
     }
 
@@ -67,5 +70,10 @@ public class FriendFragment extends BaseFragment {
         };
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onRefresh() {
+
     }
 }

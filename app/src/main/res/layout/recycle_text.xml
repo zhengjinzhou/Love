@@ -2,16 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/griditems_bg"
     android:layout_marginBottom="10dp"
     android:orientation="vertical">
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="2017-7-8" />
+        android:text="2017-7-8"
+        android:visibility="gone" />
 
     <include layout="@layout/view_info" />
 
@@ -19,10 +20,10 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:maxLines="4"
-        android:text="字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字"/>
+        android:text="字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字" />
 
-    <include layout="@layout/view_menu"/>
+    <include layout="@layout/view_menu" />
 </LinearLayout>

@@ -14,18 +14,12 @@ import zhou.com.snail.base.BaseActivity;
 
 public class HerActivity extends BaseActivity {
 
-    @BindView(R.id.iv_man)
-    ImageView ivMan;
-    @BindView(R.id.tv_name)
-    TextView tvName;
-    @BindView(R.id.tv_age)
-    TextView tvAge;
-    @BindView(R.id.tv_constellation)
-    TextView tvConstellation;
-    @BindView(R.id.tv_major)
-    TextView tvMajor;
-    @BindView(R.id.recycle)
-    RecyclerView recycle;
+    @BindView(R.id.iv_man) ImageView ivMan;
+    @BindView(R.id.tv_name) TextView tvName;
+    @BindView(R.id.tv_age) TextView tvAge;
+    @BindView(R.id.tv_constellation) TextView tvConstellation;
+    @BindView(R.id.tv_major) TextView tvMajor;
+    @BindView(R.id.recycle) RecyclerView recycle;
 
     @Override
     protected int getLayout() {
@@ -44,12 +38,5 @@ public class HerActivity extends BaseActivity {
                 finish();
                 break;
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }
