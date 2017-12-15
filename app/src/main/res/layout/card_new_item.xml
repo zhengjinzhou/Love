@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginLeft="18dp"
+    android:layout_marginRight="18dp"
+    android:layout_marginTop="18dp"
+    android:background="@drawable/home01_bg_card"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/portrait"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:minHeight="100dp"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:text=""
+            android:textColor="#565656"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/education"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="#565656"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/education"
+            android:layout_toLeftOf="@id/education"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="#565656"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/work_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/education"
+            android:layout_toRightOf="@id/education"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="#565656"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,38 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorAccent">
-
-        <TextView
-            style="@style/StyleHead"
-            android:text="LoveMe"
-            android:layout_centerInParent="true"
-            />
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:padding="16dp"
-            android:id="@+id/circleImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/followers"
-            />
-    </RelativeLayout>
-
-    <android.support.v4.widget.NestedScrollView
+    <zhou.com.snail.swipe.SwipeFlingAdapterView
+        android:id="@+id/swipe_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="56dp">
+        swipe:max_visible="4"
+        swipe:min_adapter_stack="4"
+        swipe:y_offset_step="28dp" />
 
-    </android.support.v4.widget.NestedScrollView>
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="1dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="32dp" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/swipeLeft"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@id/anchor"
+        android:layout_marginRight="56dp"
+        android:layout_toLeftOf="@id/anchor"
+        android:background="@drawable/bg_button2"
+        android:text="disLike"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/swipeRight"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@id/anchor"
+        android:layout_marginLeft="56dp"
+        android:layout_toRightOf="@id/anchor"
+        android:background="@drawable/bg_button"
+        android:text="Like"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+</RelativeLayout>

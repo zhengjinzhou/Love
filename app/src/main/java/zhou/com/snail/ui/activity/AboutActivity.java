@@ -20,7 +20,7 @@ public class AboutActivity extends BaseActivity {
     }
 
     @OnClick(R.id.iv_all_back) void back(){
-        
+
         finish();
     }
 }

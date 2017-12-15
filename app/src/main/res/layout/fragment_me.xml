@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,7 +27,7 @@
                     android:id="@+id/circle"
                     android:layout_width="68dp"
                     android:layout_height="68dp"
-                    android:src="@drawable/test1"/>
+                    android:src="@drawable/test1" />
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -39,7 +38,7 @@
                     android:layout_toRightOf="@+id/circle"
                     android:text="姓名"
                     android:textColor="#1e1e1e"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/iv_gender"
@@ -49,7 +48,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_toRightOf="@+id/circle"
-                    android:src="@drawable/male"/>
+                    android:src="@drawable/male" />
 
                 <TextView
                     android:id="@+id/tv_edit"
@@ -62,63 +61,66 @@
                     android:paddingRight="8dp"
                     android:paddingTop="14dp"
                     android:text="编辑"
-                    android:textColor="#1e1e1e"/>
+                    android:textColor="#1e1e1e" />
             </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:background="#efeff4"/>
+                android:background="#efeff4" />
+
+            <TextView
+                android:id="@+id/tv_cp"
+                style="@style/TextStyle"
+                android:text="cp 匹配" />
+
+            <TextView style="@style/LineStyle" />
 
             <TextView
                 android:id="@+id/tv_safe"
                 style="@style/TextStyle"
-                android:text="安全管理"/>
+                android:text="安全管理" />
 
-            <TextView
-                style="@style/LineStyle"/>
+            <TextView style="@style/LineStyle" />
 
             <TextView
                 android:id="@+id/tv_privacy"
                 style="@style/TextStyle"
-                android:text="隐私管理"/>
+                android:text="隐私管理" />
 
-            <TextView
-                style="@style/LineStyle"/>
+            <TextView style="@style/LineStyle" />
 
             <TextView
                 android:id="@+id/tv_picture"
                 style="@style/TextStyle"
-                android:text="好友管理"/>
+                android:text="好友管理" />
 
-            <TextView
-                style="@style/LineStyle"
-                />
+            <TextView style="@style/LineStyle" />
 
             <TextView
                 android:id="@+id/tv_about"
                 style="@style/TextStyle"
-                android:text="关于"/>
+                android:text="关于" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:background="#efeff4"/>
+                android:background="#efeff4" />
 
             <TextView
                 android:id="@+id/tv_guild"
                 style="@style/TextStyle"
-                android:text="新手引导"/>
+                android:text="新手引导" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:background="#efeff4"/>
+                android:background="#efeff4" />
 
             <TextView
                 android:id="@+id/tv_exit"
                 style="@style/TextStyle"
-                android:text="退出登录"/>
+                android:text="退出登录" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

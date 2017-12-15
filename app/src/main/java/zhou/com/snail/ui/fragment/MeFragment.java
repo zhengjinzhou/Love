@@ -36,6 +36,7 @@ import zhou.com.snail.ui.activity.AboutActivity;
 import zhou.com.snail.ui.activity.DetailActivity;
 import zhou.com.snail.ui.activity.GuildActivity;
 import zhou.com.snail.ui.activity.FriendActivity;
+import zhou.com.snail.ui.activity.HerActivity;
 import zhou.com.snail.ui.activity.PrivacyActivity;
 import zhou.com.snail.ui.activity.SafeActivity;
 import zhou.com.snail.util.CurrentTimeUtil;
@@ -120,9 +121,12 @@ public class MeFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.tv_safe, R.id.tv_about, R.id.tv_edit, R.id.tv_exit, R.id.tv_picture, R.id.tv_guild, R.id.tv_privacy})
+    @OnClick({R.id.tv_cp,R.id.tv_safe, R.id.tv_about, R.id.tv_edit, R.id.tv_exit, R.id.tv_picture, R.id.tv_guild, R.id.tv_privacy})
     void onClick(View view) {
         switch (view.getId()) {
+            case R.id.tv_cp:
+                startToActivity(HerActivity.class);
+                break;
             case R.id.tv_safe:
                 startToActivity(SafeActivity.class);
                 break;
