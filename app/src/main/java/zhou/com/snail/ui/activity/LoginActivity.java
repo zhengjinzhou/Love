@@ -103,7 +103,13 @@ public class LoginActivity extends BaseActivity {
 
     Callback callback = new Callback() {
         @Override
-        public void onFailure(Call call, IOException e) {
+        public void onFailure(Call call, final IOException e) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ToastUtil.show(getApplicationContext(),e.getMessage());
+                }
+            });
             Log.d(TAG, "onFailure: " + e.getMessage());
         }
 
@@ -149,7 +155,7 @@ public class LoginActivity extends BaseActivity {
         Call call2 = okHttpClient.newCall(request);
         call2.enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(Call call, final IOException e) {
                 Log.d(TAG, "---------onFailure: " + e.getMessage());
             }
 

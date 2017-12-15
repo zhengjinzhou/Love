@@ -1,11 +1,14 @@
 package zhou.com.snail.ui.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,7 @@ public class StartActivity extends BaseActivity {
 
     @BindView(R.id.viewPager) ViewPager viewPager;
     private List<View> list;
+    private SharedPreferences sp;
 
     @Override
     protected int getLayout() {
@@ -26,7 +30,14 @@ public class StartActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        initViewpager();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        sp = getSharedPreferences("Start", Context.MODE_PRIVATE);
+        boolean first = sp.getBoolean("FIRST", false);
+        if (first){
+            startToActivity(SplashActivity.class);
+        }else {
+            initViewpager();
+        }
     }
 
 
@@ -36,6 +47,17 @@ public class StartActivity extends BaseActivity {
         View view1 = getLayoutInflater().inflate(R.layout.layout1, null);
         View view2 = getLayoutInflater().inflate(R.layout.layout2, null);
         View view3 = getLayoutInflater().inflate(R.layout.layout3, null);
+
+        view3.findViewById(R.id.bt_next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startToActivity(LoginActivity.class);
+                SharedPreferences.Editor edit = sp.edit();
+                edit.putBoolean("FIRST",true);
+                edit.commit();
+                finish();
+            }
+        });
 
         list.add(view1);
         list.add(view2);
