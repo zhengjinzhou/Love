@@ -155,7 +155,8 @@ public class EditActivity extends BaseActivity {
                 System.out.println(tag);
             }
         });
-
+        if (App.getInstence() == null) return;
+        if (App.getInstence().getSelectBean() == null) return;
         SelectBean selectBean = App.getInstence().getSelectBean();
         List<SelectBean.CategoryListBean> categoryList = selectBean.getCategoryList();
         if (selectBean == null) return;
