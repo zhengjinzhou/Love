@@ -12,4 +12,7 @@
 
     <color name="black">#333333</color>
     <color name="app_bg">#f0eff5</color>
+
+    <color name="bt_login">#44B1F6</color>
+    <color name="bt_register">#202D2A</color>
 </resources>

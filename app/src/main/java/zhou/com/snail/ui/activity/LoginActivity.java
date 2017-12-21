@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -33,9 +34,17 @@ import zhou.com.snail.util.ToastUtil;
 
 public class LoginActivity extends BaseActivity {
 
-    @BindView(R.id.circle) CircleImageView circle;
-    @BindView(R.id.et_username) EditText etUsername;
-    @BindView(R.id.et_password) EditText etPassword;
+    @BindView(R.id.circle)
+    CircleImageView circle;
+    @BindView(R.id.et_username)
+    EditText etUsername;
+    @BindView(R.id.et_password)
+    EditText etPassword;
+    @BindView(R.id.tv_head)
+    TextView tv_head;
+    @BindView(R.id.tv_forget)
+    TextView tv_forget;
+
 
     private String TAG = "LoginActivity";
 
@@ -46,18 +55,25 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        tv_head.setText("登陆");
+
         etUsername.setText("2014414");
         etPassword.setText("123");
     }
 
 
-    @OnClick({R.id.bt_login})
+    @OnClick({R.id.bt_login, R.id.back, R.id.tv_forget})
     void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.bt_login:
                 login();
+                break;
+            case R.id.back:
+                finish();
+                break;
+            case R.id.tv_forget:
+                ToastUtil.show(getApplicationContext(), "待续");
                 break;
         }
     }
@@ -82,7 +98,7 @@ public class LoginActivity extends BaseActivity {
         String joint = "_t=" + _t + "&actNumber=" + username + "&opt=" + opt + "&pwd=" + pwd + Constant.APP_ENCRYPTION_KEY;
         String _s = Md5Util.encoder(joint);
 
-        System.out.println("拼接后_t的数据--------"+joint);
+        System.out.println("拼接后_t的数据--------" + joint);
 
         OkHttpClient okHttpClient = new OkHttpClient();
 
@@ -107,7 +123,7 @@ public class LoginActivity extends BaseActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    ToastUtil.show(getApplicationContext(),e.getMessage());
+                    ToastUtil.show(getApplicationContext(), e.getMessage());
                 }
             });
             Log.d(TAG, "onFailure: " + e.getMessage());
@@ -116,7 +132,7 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             String string = response.body().string();
-            Log.d(TAG, "onResponse: "+string);
+            Log.d(TAG, "onResponse: " + string);
             getResult(string);
         }
     };
@@ -127,17 +143,17 @@ public class LoginActivity extends BaseActivity {
         String token = userInfo.getToken();
         String uid = userInfo.getUid();
 
-        if (!userInfo.getError().equals("-1")){
+        if (!userInfo.getError().equals("-1")) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    ToastUtil.show(getApplicationContext(),"访问超时，请检查您的系统时间是否是24小时制");
+                    ToastUtil.show(getApplicationContext(), "访问超时，请检查您的系统时间是否是24小时制");
                 }
             });
             return;
         }
-        Log.d(TAG, "getResult: "+token);
-        Log.d(TAG, "getResult: "+uid);
+        Log.d(TAG, "getResult: " + token);
+        Log.d(TAG, "getResult: " + uid);
 
         String opt = "5";
         String _t = CurrentTimeUtil.nowTime();
