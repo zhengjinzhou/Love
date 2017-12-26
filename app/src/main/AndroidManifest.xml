@@ -34,7 +34,9 @@
         <activity android:name=".ui.activity.TaskActivity" />
         <activity android:name=".ui.activity.SplashActivity" />
         <activity android:name=".ui.activity.AppActivity" />
-        <activity android:name=".ui.activity.Register2Activity"></activity>
+        <activity android:name=".ui.activity.Register2Activity" />
+        <activity android:name=".ui.activity.InviteActivity" />
+        <activity android:name=".ui.activity.LotteryActivity"></activity>
     </application>
 
 </manifest>
