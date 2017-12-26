@@ -15,4 +15,7 @@
 
     <color name="bt_login">#44B1F6</color>
     <color name="bt_register">#202D2A</color>
+
+    <color name="bottom_bg">#f5f9f8</color>
+
 </resources>
