@@ -33,7 +33,8 @@
         <activity android:name=".ui.activity.HerActivity" />
         <activity android:name=".ui.activity.TaskActivity" />
         <activity android:name=".ui.activity.SplashActivity" />
-        <activity android:name=".ui.activity.AppActivity"></activity>
+        <activity android:name=".ui.activity.AppActivity" />
+        <activity android:name=".ui.activity.Register2Activity"></activity>
     </application>
 
 </manifest>

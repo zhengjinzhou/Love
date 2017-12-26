@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="zhou.com.snail.ui.activity.Register2Activity">
+
+    <include layout="@layout/headerbar" />
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_16"
+        android:layout_marginRight="@dimen/space_16"
+        android:layout_marginTop="98dp"
+        android:background="@drawable/bg_login"
+        android:hint="请输入用户名"
+        android:maxLines="1"
+        android:padding="@dimen/space_12"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_16"
+        android:layout_marginRight="@dimen/space_16"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_login"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:padding="@dimen/space_12"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/et_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_16"
+        android:layout_marginRight="@dimen/space_16"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_login"
+        android:hint="请输入确认密码"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:padding="@dimen/space_12"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/et_inviteCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_16"
+        android:layout_marginRight="@dimen/space_16"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_login"
+        android:hint="请输入邀请码"
+        android:maxLines="1"
+        android:padding="@dimen/space_12"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_drawable_login"
+        android:text="注 册"
+        android:textColor="#fff"
+        android:textSize="14sp" />
+
+</LinearLayout>

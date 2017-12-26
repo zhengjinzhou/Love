@@ -51,7 +51,7 @@ public class StartActivity extends BaseActivity {
         view3.findViewById(R.id.bt_next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startToActivity(LoginActivity.class);
+                startToActivity(AppActivity.class);
                 SharedPreferences.Editor edit = sp.edit();
                 edit.putBoolean("FIRST",true);
                 edit.commit();

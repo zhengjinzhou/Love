@@ -3,6 +3,7 @@ package zhou.com.snail.ui.fragment;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,8 +21,15 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import zhou.com.snail.R;
 import zhou.com.snail.base.BaseFragment;
+import zhou.com.snail.config.Constant;
 import zhou.com.snail.swipe.SwipeFlingAdapterView;
 import zhou.com.snail.ui.activity.HerActivity;
 
@@ -35,7 +44,6 @@ public class HomeFragment extends BaseFragment implements SwipeFlingAdapterView.
     @BindView(R.id.swipe_view) SwipeFlingAdapterView swipeView;
     @BindView(R.id.swipeLeft) View vLeft;
     @BindView(R.id.swipeRight) View vRight;
-
 
     private static final String TAG = "HomeFragment";
     int [] headerIcons = {
@@ -65,6 +73,9 @@ public class HomeFragment extends BaseFragment implements SwipeFlingAdapterView.
 
     @Override
     protected void init(View v) {
+
+        getInfo();
+
         nameList = new ArrayList<>();
         cityList = new ArrayList<>();
         edusList = new ArrayList<>();
@@ -76,6 +87,28 @@ public class HomeFragment extends BaseFragment implements SwipeFlingAdapterView.
 
         initView();
         loadData();
+    }
+
+    /**
+     * 获取异性信息
+     */
+    private void getInfo() {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        FormBody body = new FormBody.Builder()
+                .build();
+        Request request = new Request.Builder().url(Constant.ISOMERISM_URL).post(body).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d(TAG, "onFailure: "+e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG, "onResponse: "+response.body().string());
+            }
+        });
     }
 
     private void initView() {
