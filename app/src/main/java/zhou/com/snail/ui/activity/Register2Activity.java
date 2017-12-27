@@ -105,7 +105,7 @@ public class Register2Activity extends BaseActivity {
             return;
         }
 
-        if (password.equals(confirm)) {
+        if (!password.equals(confirm)) {
             ToastUtil.show(getApplicationContext(), "密码与确认密码不一致");
             return;
         }

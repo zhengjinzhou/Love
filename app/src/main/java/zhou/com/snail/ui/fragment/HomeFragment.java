@@ -28,10 +28,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import zhou.com.snail.R;
+import zhou.com.snail.base.App;
 import zhou.com.snail.base.BaseFragment;
 import zhou.com.snail.config.Constant;
 import zhou.com.snail.swipe.SwipeFlingAdapterView;
 import zhou.com.snail.ui.activity.HerActivity;
+import zhou.com.snail.util.CurrentTimeUtil;
+import zhou.com.snail.util.Md5Util;
 
 /**
  * Created by zhou on 2017/10/22.
@@ -93,22 +96,27 @@ public class HomeFragment extends BaseFragment implements SwipeFlingAdapterView.
      * 获取异性信息
      */
     private void getInfo() {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        FormBody body = new FormBody.Builder()
-                .build();
-        Request request = new Request.Builder().url(Constant.ISOMERISM_URL).post(body).build();
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d(TAG, "onFailure: "+e.getMessage());
-            }
+        if (App.getInstence().getUserInfo() != null){
+            String token = App.getInstence().getUserInfo().getToken();
+            Log.d(TAG, "getInfo: "+token);
+            OkHttpClient okHttpClient = new OkHttpClient();
+            FormBody body = new FormBody.Builder()
+                    .add("token",token)
+                    .build();
+            Request request = new Request.Builder().url(Constant.ISOMERISM_URL).post(body).build();
+            Call call = okHttpClient.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.d(TAG, "获取异性信息 onFailure: "+e.getMessage());
+                }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.d(TAG, "onResponse: "+response.body().string());
-            }
-        });
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    Log.d(TAG, "获取异性信息 onResponse: "+response.body().string());
+                }
+            });
+        }
     }
 
     private void initView() {

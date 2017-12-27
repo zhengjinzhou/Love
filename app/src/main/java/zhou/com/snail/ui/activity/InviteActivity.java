@@ -7,20 +7,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import zhou.com.snail.R;
 import zhou.com.snail.adapter.base.BaseCommonAdapter;
 import zhou.com.snail.adapter.base.ViewHolder;
+import zhou.com.snail.base.App;
 import zhou.com.snail.base.BaseActivity;
+import zhou.com.snail.config.Constant;
+import zhou.com.snail.util.CurrentTimeUtil;
+import zhou.com.snail.util.Md5Util;
 
 public class InviteActivity extends BaseActivity {
 
+    private static final String TAG = "InviteActivity";
     @BindView(R.id.tv_inviteCode)
     TextView tv_inviteCode;
     @BindView(R.id.tv_head)
@@ -34,6 +47,40 @@ public class InviteActivity extends BaseActivity {
     @Override
     protected void init() {
         tv_head.setText("邀请好友");
+        //生成邀请码
+        getInvited();
+    }
+
+    private void getInvited() {
+        if (App.getInstence().getUserInfo() != null){
+            String token = App.getInstence().getUserInfo().getToken();
+            String opt = "12";
+            String _t = CurrentTimeUtil.nowTime();
+            String joint = "_t=" + _t +  "&opt=" + opt + "&token="+ token + Constant.APP_ENCRYPTION_KEY;
+            Log.d(TAG, "getInvited: "+joint);
+            String _s = Md5Util.encoder(joint);
+            OkHttpClient okHttpClient = new OkHttpClient();
+            FormBody body = new FormBody.Builder()
+                    .add("token", token)
+                    .add("opt", opt)
+                    .add("_t", _t)
+                    .add("_s", _s)
+                    .build();
+            Request request = new Request.Builder().post(body).url(Constant.LOGIN_URL).build();
+            Call call = okHttpClient.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.d(TAG, "onFailure: "+e.getMessage());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String string = response.body().string();
+                    Log.d(TAG, "onResponse: "+string);
+                }
+            });
+        }
     }
 
     /**
