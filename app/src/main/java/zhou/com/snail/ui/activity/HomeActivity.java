@@ -27,7 +27,6 @@ public class HomeActivity extends BaseActivity {
     FrameLayout fragmentContent;
     private HomeFragment homeFragment;
     private MeFragment meFragment;
-    private TaskFragment taskFragment;
     private Fragment[] fragments;
     private int currentTabIndex = 0;
     private FriendFragment friendFragment;
@@ -47,14 +46,11 @@ public class HomeActivity extends BaseActivity {
         homeFragment = new HomeFragment();
         meFragment = new MeFragment();
         friendFragment = new FriendFragment();
-        taskFragment = new TaskFragment();
 
-        fragments = new Fragment[]{homeFragment, taskFragment, friendFragment, meFragment};
+        fragments = new Fragment[]{homeFragment, friendFragment, meFragment};
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.fragment_content, homeFragment)
                 .hide(homeFragment)
-                .add(R.id.fragment_content, taskFragment)
-                .hide(taskFragment)
                 .add(R.id.fragment_content, friendFragment)
                 .hide(friendFragment)
                 .add(R.id.fragment_content, meFragment)
@@ -63,20 +59,17 @@ public class HomeActivity extends BaseActivity {
                 .commit();
     }
 
-    @OnClick({R.id.tv_home, R.id.tv_task, R.id.tv_me, R.id.tv_friend})
+    @OnClick({R.id.tv_home, R.id.tv_me, R.id.tv_friend})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_home:
                 showTabFragment(0);
                 break;
-            case R.id.tv_task:
+            case R.id.tv_friend:
                 showTabFragment(1);
                 break;
-            case R.id.tv_friend:
-                showTabFragment(2);
-                break;
             case R.id.tv_me:
-                showTabFragment(3);
+                showTabFragment(2);
                 break;
         }
     }

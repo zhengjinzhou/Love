@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -33,8 +34,10 @@ import zhou.com.snail.base.BaseFragment;
 import zhou.com.snail.config.Constant;
 import zhou.com.snail.swipe.SwipeFlingAdapterView;
 import zhou.com.snail.ui.activity.HerActivity;
+import zhou.com.snail.ui.activity.LotteryActivity;
 import zhou.com.snail.util.CurrentTimeUtil;
 import zhou.com.snail.util.Md5Util;
+import zhou.com.snail.util.ToastUtil;
 
 /**
  * Created by zhou on 2017/10/22.
@@ -267,7 +270,7 @@ public class HomeFragment extends BaseFragment implements SwipeFlingAdapterView.
 
         // TODO: getView
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             ViewHolder holder;
             Talent talent = getItem(position);
             if (convertView == null) {
@@ -281,10 +284,10 @@ public class HomeFragment extends BaseFragment implements SwipeFlingAdapterView.
                 holder.cityView = (TextView) convertView.findViewById(R.id.city);
                 holder.eduView = (TextView) convertView.findViewById(R.id.education);
                 holder.workView = (TextView) convertView.findViewById(R.id.work_year);
+
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
 
             holder.portraitView.setImageResource(talent.headerIcon);
 
@@ -317,7 +320,7 @@ public class HomeFragment extends BaseFragment implements SwipeFlingAdapterView.
         TextView eduView;
         TextView workView;
         CheckedTextView collectView;
-
+        LinearLayout layout;
     }
 
     public static class Talent {

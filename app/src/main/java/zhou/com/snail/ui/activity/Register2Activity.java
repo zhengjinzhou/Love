@@ -138,7 +138,8 @@ public class Register2Activity extends BaseActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d(TAG, "onResponse: "+response.body().string());
+                Log.d(TAG, "注册onResponse: "+response.body().string());
+                //转到登录界面
             }
         });
     }

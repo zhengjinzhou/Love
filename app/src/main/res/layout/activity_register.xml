@@ -42,7 +42,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="3"
                 android:background="@drawable/bg_login"
-                android:hint="请输入您的手机号码"
+                android:hint="请输入您的验证码"
                 android:maxLines="1"
                 android:padding="@dimen/space_12"
                 android:singleLine="true" />

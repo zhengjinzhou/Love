@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -27,6 +29,7 @@ import zhou.com.snail.adapter.base.BaseCommonAdapter;
 import zhou.com.snail.adapter.base.ViewHolder;
 import zhou.com.snail.base.App;
 import zhou.com.snail.base.BaseActivity;
+import zhou.com.snail.bean.InvitBean;
 import zhou.com.snail.config.Constant;
 import zhou.com.snail.util.CurrentTimeUtil;
 import zhou.com.snail.util.Md5Util;
@@ -34,10 +37,9 @@ import zhou.com.snail.util.Md5Util;
 public class InviteActivity extends BaseActivity {
 
     private static final String TAG = "InviteActivity";
-    @BindView(R.id.tv_inviteCode)
-    TextView tv_inviteCode;
-    @BindView(R.id.tv_head)
-    TextView tv_head;
+    @BindView(R.id.tv_inviteCode) TextView tv_inviteCode;
+    @BindView(R.id.tv_head) TextView tv_head;
+    private String invited;
 
     @Override
     protected int getLayout() {
@@ -78,6 +80,22 @@ public class InviteActivity extends BaseActivity {
                 public void onResponse(Call call, Response response) throws IOException {
                     String string = response.body().string();
                     Log.d(TAG, "onResponse: "+string);
+                    getResult(string);
+                }
+            });
+        }
+    }
+
+    //生成邀请码
+    private void getResult(String data) {
+        Gson gson = new Gson();
+        final InvitBean invitBean = gson.fromJson(data, InvitBean.class);
+        if (invitBean.getError().equals("-1")){
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tv_inviteCode.setText(invitBean.getInviteCode());
+                    invited = invitBean.getInviteCode();
                 }
             });
         }
@@ -92,7 +110,7 @@ public class InviteActivity extends BaseActivity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
-        intent.putExtra(Intent.EXTRA_TEXT, "邀请码");
+        intent.putExtra(Intent.EXTRA_TEXT, "邀请码为："+invited);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(Intent.createChooser(intent, getTitle()));
     }

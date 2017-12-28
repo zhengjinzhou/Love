@@ -86,7 +86,7 @@ public class MeFragment extends BaseFragment {
         data.add(new BaseBean(FriendActivity.class,"好友管理",R.drawable.home01_icon_edu));
         data.add(new BaseBean(AboutActivity.class,"关于",R.drawable.home01_icon_edu));
         data.add(new BaseBean(LotteryActivity.class,"抽奖活动",R.drawable.home01_icon_edu));
-
+        data.add(new BaseBean(LotteryActivity.class,"任务系统",R.drawable.home01_icon_edu));
 
         BaseCommonAdapter adapter = new BaseCommonAdapter<BaseBean>(getContext(), R.layout.recycle_me, data) {
             @Override
